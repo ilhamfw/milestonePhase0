@@ -80,6 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="exampleFormControlTextarea1">Message</label>
                 <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <button type="submit" class="btn btn-primary">Tambah Kontak</button>
+                <p>Anda Ingin Edit Kontak anda yang sudah ada? Silahkan Klik!</p><a href="update.php">Edit Kontak</a>
             </div>
         </form>
     </div>

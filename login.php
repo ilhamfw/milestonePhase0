@@ -83,7 +83,7 @@ if(isset($_POST['login'])){
 
         <h4>Masuk ke StreamFlix</h4>
         <p>Belum punya akun? <a href="register.php">Daftar di sini</a></p>
-
+<!-- //Methode post -->
         <form action="" method="POST">
 
             <div class="form-group">

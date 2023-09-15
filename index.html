@@ -21,13 +21,13 @@
                     <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Film</a>
+                    <a class="nav-link" href="films.html">Film</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gallery</a>
+                    <a class="nav-link" href="gallery.html">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">About Us</a>
+                    <a class="nav-link" href="aboutUs.html">About Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="create.php">Contact Us</a>
@@ -129,6 +129,18 @@
             </div> -->
         </div>
     </div>
+    <!-- Membuat Footer -->
+    <div class="card">
+        <div class="card-footer">
+          
+        </div>
+        <div class="card-body">
+            <h4>StreamFlix</h4>
+            <p>StreamFlix merupakan situs penyedia layanan streaming film dan serial tv gratis. Sama seperti penyedia film dan serial tv lainnya seperti Netflix, Disney+, HBO, Apple TV+, Amazon Prime Video, dan lainnya. StreamFlix berusaha untuk menyediakan layanan streaming gratis untuk selamanya kepada para rakyat Indonesia yang belum mampu berlangganan layanan premium streaming seperti yang disebut diatas. Perlu diperhatikan StreamFlix tidak menyediakan film maupun serial tv dari negara Indonesia.</p>
+            <p class="text-sm-left">Ingin memberikan Kritik dan Saran untuk pengembangan kami? Silahkan klik link di bawah</p>
+          <a href="create.php" class="btn btn-primary">Hubungi Kami</a>
+        </div>
+      </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -144,7 +156,7 @@
         searchInput.addEventListener('input', () => {
             searchMovies(searchInput.value);
         })
-
+        //Fungsi Searching keyword secara realtime
         function searchMovies(param) {
             console.log(param);
             let matchingmovies = movies;
@@ -157,45 +169,51 @@
                 )
             }
             // console.log(matchingmovies)
-            let html = ''
-            matchingmovies.forEach(element => {
-                html += '<div class="col-md-2">' +
-                    '<div class="card" style="width: 12rem;">' +
-                    '<img src="' + element.foto + '" class="card-img-top"alt="...">' +
-                    '<div class="card-body">' +
-                    '<h5 class="card-title">' + element.nama + '</h5>' +
-                    '<div class="modal fade" id="exampleModal'+ element.id +'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">'+
-                        '<div class="modal-dialog" role="document">'+
-                            '<div class="modal-content">'+
-                                '<div class="modal-header">'+
-                                    '<h5 class="modal-title" id="exampleModalLabel">'+ element.nama +'</h5>'+
-                                    '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'+
-                                        '<span aria-hidden="true">&times;</span>'+
-                                    '</button>'+
-                                '</div>'+
-                                '<div class="modal-body">'+
-                                    '<img src="' + element.foto + '" class="card-img-top"alt="...">' +
-                                    element.deskripsi +
-                                '</div>'+
-                                '<div class="modal-footer">'+
-                                    '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-                                    '<button type="button" class="btn btn-primary">Save changes</button>'+
-                                '</div>'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>'+
-                '<button href="#"type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#exampleModal'+ element.id +'">Go somewhere</a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>'
-            });
-            document.getElementById('listMovie').innerHTML = html
+            let html = '';
+matchingmovies.forEach(element => {
+    html += `
+        <div class="container col-md-2 mb-4">
+            <div class="card">
+                <img src="${element.foto}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">${element.nama}</h6>
+                    
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal${element.id}">Detail Film</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal${element.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">${element.nama}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="${element.foto}" class="card-img-top" alt="...">
+                        ${element.deskripsi}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+});
+document.getElementById('listMovie').innerHTML = html;
+
         };
         const movies = [
             {
                 id: 1,
                 nama: 'Spider-Man: Across the Spider-Verse',
-                deskripsi: 'Miles Morales hadir kembali dalam babak baru saga Spider-Verse.',
+                deskripsi: 'Miles Morales hadir kembali dalam babak baru saga Spider-Verse. Usai berjumpa lagi dengan Gwen Stacy, Spider-Man si tetangga yang ramah asal Brooklyn ini terlontar melintasi Multiverse yang membawanya pada Spider Society, kelompok pahlawan manusia laba-laba yang bertugas melindungi kelangsungan Multiverse. Namun, saat para pahlawan ini berselisih tentang cara melawan sebuah ancaman besar, Miles pun harus beradu dengan para manusia laba-laba yang lain dan menetapkan langkahnya sendiri demi menyelamatkan orang-orang yang ia cintai. Siapa pun bisa memakai topeng itunamun seorang pahlawan adalah ia yang tahu benar cara memakainya.',
                 foto: 'https://image.tmdb.org/t/p/w185/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg'
             },
             {

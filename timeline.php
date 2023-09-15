@@ -50,21 +50,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <p><a href="logout.php">Logout</a></p>
                     <p><a href="">Home</a></p>
+                    <p><a href="update.php">Edit Kontak</a></p>
                 </div>
             </div>
 
             
         </div>
 
-        <h2>Edit Kontak</h2>
-    <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        ID User: <input type="text" name="id"><br>
-        Username: <input type="text" name="username"><br>
-        Email: <input type="text" name="email"><br>
-        Name: <input type="text" name="name"><br>
         
-        <input type="submit" value="Edit Kontak">
-    </form>
 
 
         <div class="col-md-8">
